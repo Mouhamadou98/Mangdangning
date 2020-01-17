@@ -35,5 +35,21 @@ set_time_limit(0);
 
 $j++;
      }
-
+     $tmp_file = tempnam('.', 'tes');
+     $zip->open($tmp_file, ZipArchive::CREATE);
+    $zip->addEmptyDir($nameManga.$k);
+    // # loop through each file
+     foreach ($table as $file) {
+         $download_file = file_get_contents($file);
+    
+         $zip->addFromString($nameManga."/".$k.basename($file), $download_file);
+     }
+    
+    }
+    $zip->close();
+    header('Content-disposition: attachment; filename="my file.zip"');
+     header('Content-type: application/zip');
+     readfile($tmp_file);
+     unlink($tmp_file); 
+     ?>
 ?>
