@@ -1,11 +1,11 @@
 <?php
 
 set_time_limit(0);
- $nameManga="one-piece";
+ $nameManga=argv[1];
  $firstChapiter=1;
  $lastChapiter;
- $firstEpisode=2;
- $lastEpisode=3;
+ $firstEpisode=argv[2];
+ $lastEpisode=argv[3];
  $table;
  $zip = new ZipArchive();
  $j=0;
@@ -27,7 +27,7 @@ set_time_limit(0);
   $strResult2 = implode("",file($lien2));
  if(isset($strResult2)){
 
-     $url=explode(' ',substr($strResult2,strpos ($strResult2,'id="img'))); 
+    //  m   $url=explode(' ',substr($strResult2,strpos ($strResult2,'id="img'))); 
       }
   $url1 = str_replace("src=","",$url[5]); 
   $url1 = str_replace('"','',$url1);
